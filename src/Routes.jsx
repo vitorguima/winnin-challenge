@@ -1,15 +1,16 @@
 import React from 'react';
 
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 import PostsDiscovery from './pages/PostsDiscovery';
-import PostDetails from './pages/PostDetails';
 
 function Routes() {
   return (
     <Switch>
-      <Route exact path="/" component={PostsDiscovery} />
-      <Route path="/post/:id" component={PostDetails} />
+      <Redirect exact from="/" to="/new" />
+      <Route exact path="/new" component={PostsDiscovery} />
+      <Route exact path="/rising" component={PostsDiscovery} />
+      <Route exact path="/hot" component={PostsDiscovery} />
     </Switch>
   );
 }
