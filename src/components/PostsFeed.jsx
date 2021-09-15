@@ -13,59 +13,52 @@ export default function PostsFeed() {
   const [paginationCount, setPaginationCount] = useState();
   const currentRoute = useLocation();
   const currentPath = currentRoute.pathname;
-  // const observer = useRef();
+  const observer = useRef();
 
-  // const lastPostElementRef = useCallback((node) => {
-  //   if (isPageLoading) return;
-  //   if (observer.current) observer.current.disconnect();
-  //   observer.current = new IntersectionObserver((entries) => {
-  //     if (entries[0].isIntersecting) {
-  //       setPaginationCount((previousCount)=> previousCount ? previousCount + 1 : 1)
-  //     }
-  //   });
-  //   if (node) observer.current.observe(node);
-  // }, [isPageLoading]);
+  const lastPostElementRef = useCallback((node) => {
+    if (isPageLoading) return;
+    if (observer.current) observer.current.disconnect();
+    observer.current = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        setPaginationCount((previousCount) => previousCount ? previousCount + 1 : 1)
+      }
+    });
+    if (node) observer.current.observe(node);
+  }, [isPageLoading]);
 
-  const renderPostCards = () => {
-    return(
-      redditPosts
-        .map(({ data }, index) => <PostCard key={index} title={data.title} created_utc={data.created_utc} author={data.author} url={data.url} />)
-    );
-  }
-
-  // const renderPostCards = () => (
-  //   reddiPosts
-  //     .map(({ data }, index) => {
-  //       if (redditPosts.length === index + 1) {
-  //         return (
-  //           <PostCard
-  //             key={index}
-  //             title={data.title}
-  //             created_utc={data.created_utc}
-  //             author={data.author}
-  //             url={data.url}
-  //             lastPostRef={lastPostElementRef}
-  //           />
-  //         );
-  //       }
-  //       return (
-  //         <PostCard
-  //           key={index}
-  //           title={data.title}
-  //           created_utc={data.created_utc}
-  //           author={data.author}
-  //           url={data.url}
-  //         />
-  //       );
-  //     })
-  // );
+  const renderPostCards = () => (
+    redditPosts
+      .map(({ data }, index) => {
+        if (redditPosts.length === index + 1) {
+          return (
+            <PostCard
+              key={index}
+              title={data.title}
+              created_utc={data.created_utc}
+              author={data.author}
+              url={data.url}
+              lastPostRef={lastPostElementRef}
+            />
+          );
+        }
+        return (
+          <PostCard
+            key={index}
+            title={data.title}
+            created_utc={data.created_utc}
+            author={data.author}
+            url={data.url}
+          />
+        );
+      })
+  );
 
   useEffect(() => {
     const setInitialPosts = async () => {
       setIsPageLoading(true);
       const fetchReturn = await getPostsList(currentPath, '');
-      setRedditPosts(fetchReturn.children);
       setPaginationParam(fetchReturn.after);
+      setRedditPosts([...fetchReturn.children]);
       setIsPageLoading(false);
     };
     setInitialPosts();
@@ -87,15 +80,10 @@ export default function PostsFeed() {
   return (
     <div>
       <main>
-        { isPageLoading ? "loading..." : renderPostCards() }
+        { !redditPosts ? "loading..." : renderPostCards() }
       </main>
       <footer>
-        <button
-          type="button"
-          onClick={() => setPaginationCount((previousCount)=> previousCount ? previousCount + 1 : 1)}
-        >
-          + Ver mais
-        </button>
+      <p>Arrase Para ver mais</p>
       </footer>
     </div>
   );

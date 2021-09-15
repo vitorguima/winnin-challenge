@@ -4,3 +4,7 @@
   padding: 5px;
   width: 500px;
 }
+
+.hidden-link {
+  visibility: hidden;
+}
