@@ -14,22 +14,71 @@ export default function PostCard(props) {
 
   const validateLinkVisibility = () => {
     return media ? 'hidden-link' : 'visible-link'
-  }
+  };
+
+  const convertCreationDate =  (dateInUnix) => {
+    const convertParam =  1000;
+    const dateToIso = new Date(dateInUnix * convertParam);
+    return dateToIso;
+  };
+
+  const calculateTopicPostAge = (dateInUnix) =>  {
+    const topicCreateTime  = convertCreationDate(dateInUnix);
+    const convertMinutesToHour = 3600000;
+    const currentTime = new Date();
+    const diferenceInHours = Math.round((currentTime - topicCreateTime) / (convertMinutesToHour));
+    return diferenceInHours;
+  };
+
+  const renderCreationTime = (dateInUnix, authorName) => {
+    const hoursSinceCreation = calculateTopicPostAge(dateInUnix);
+    const userUrl = `https://www.reddit.com/user/${authorName}/`
+
+    if (hoursSinceCreation < 1) {
+      return (
+        <p>
+          enviado há menos de uma hora por <a href={userUrl}>{authorName}</a>
+        </p>
+      );
+    };
+
+    if (hoursSinceCreation === 1) {
+      return (
+        <p>
+          enviado há 1 hora por <a href={userUrl}>{authorName}</a>
+        </p>
+      );
+    };
+
+    if (hoursSinceCreation > 1 && hoursSinceCreation < 24) {
+      return (
+        <p>
+          enviado há {hoursSinceCreation} horas por <a href={userUrl}>{authorName}</a>
+        </p>
+      );
+    }
+
+    return (
+      <p>
+        enviado há mais de um dia por <a href={userUrl}>{authorName}</a>
+      </p>
+    );
+  };
+
   // Criar uma função para tratar o tamanho do título, setando um length máx de caracteres
-  // Criar uma função para tratar o created_utc, tranformá-lo em horas e gerar a diferença entre (current date - created_utc);
   return (
     <article 
       className="postcard-wrapper"
       ref={lastPostRef}
     >
       <p>{title}</p>
-      <p>enviado há {created_utc} horas por {author}</p>
+      {renderCreationTime(created_utc, author)}
       <a
         href={postUrl} 
         target="blank"
         className={validateLinkVisibility()}
       >
-        redddit.com
+        reddit.com
       </a>
     </article>
   );

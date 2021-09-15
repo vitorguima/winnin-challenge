@@ -19,39 +19,12 @@ export default function PostsFeed() {
     if (isPageLoading) return;
     if (observer.current) observer.current.disconnect();
     observer.current = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) {
+      if (entries[0].isIntersecting && paginationParam) {
         setPaginationCount((previousCount) => previousCount ? previousCount + 1 : 1)
       }
     });
     if (node) observer.current.observe(node);
   }, [isPageLoading]);
-
-  const renderPostCards = () => (
-    redditPosts
-      .map(({ data }, index) => {
-        if (redditPosts.length === index + 1) {
-          return (
-            <PostCard
-              key={index}
-              title={data.title}
-              created_utc={data.created_utc}
-              author={data.author}
-              url={data.url}
-              lastPostRef={lastPostElementRef}
-            />
-          );
-        }
-        return (
-          <PostCard
-            key={index}
-            title={data.title}
-            created_utc={data.created_utc}
-            author={data.author}
-            url={data.url}
-          />
-        );
-      })
-  );
 
   useEffect(() => {
     const setInitialPosts = async () => {
@@ -77,13 +50,42 @@ export default function PostsFeed() {
     }
   }, [paginationCount])
 
+  const renderPostCards = () => (
+    redditPosts
+      .map(({ data }, index) => {
+        if (redditPosts.length === index + 1) {
+          return (
+            <PostCard
+              key={index}
+              title={data.title}
+              created_utc={data.created_utc}
+              author={data.author}
+              postUrl={data.url}
+              lastPostRef={lastPostElementRef}
+              media={data.media}
+            />
+          );
+        }
+        return (
+          <PostCard
+            key={index}
+            title={data.title}
+            created_utc={data.created_utc}
+            author={data.author}
+            postUrl={data.url}
+            media={data.media}
+          />
+        );
+      })
+  );
+
   return (
     <div>
       <main>
         { !redditPosts ? "loading..." : renderPostCards() }
       </main>
       <footer>
-      <p>Arrase Para ver mais</p>
+      {paginationParam ? null : 'Você chegou ao final dos tópicos'}
       </footer>
     </div>
   );
