@@ -1,0 +1,16 @@
+.find-more-button {
+  background-color: #6324C6;
+  border: none;
+  border-radius: 8px;
+  font-size: 20px;
+  height: 4vh;
+  width: 90vw;
+  color: #ffff;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+  cursor: pointer;
+}
+
+.find-more-button:hover {
+  background-color: #4d1d9b;
+}

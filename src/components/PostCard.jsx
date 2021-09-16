@@ -9,7 +9,6 @@ export default function PostCard(props) {
     created_utc,
     author,
     postUrl,
-    lastPostRef,
   } = props;
 
   const validateLinkVisibility = () => {
@@ -74,7 +73,6 @@ export default function PostCard(props) {
   return (
     <article 
       className="postcard-wrapper"
-      ref={lastPostRef}
     >
       <div>
         <p className="post-title">{treatsTitleCharacters(title)}</p>

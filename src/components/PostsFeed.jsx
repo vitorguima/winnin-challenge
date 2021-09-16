@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { useLocation } from 'react-router-dom';
 
@@ -7,6 +7,7 @@ import PostCard from '../components/PostCard';
 import getPostsList from '../services/getPostsList';
 
 import '../styles/postsFeedStyles.css';
+import FindMoreButton from './FindMoreButton';
 
 export default function PostsFeed() {
   const [isPageLoading, setIsPageLoading] = useState(false);
@@ -15,18 +16,6 @@ export default function PostsFeed() {
   const [paginationCount, setPaginationCount] = useState();
   const currentRoute = useLocation();
   const currentPath = currentRoute.pathname;
-  const observer = useRef();
-
-  const lastPostElementRef = useCallback((node) => {
-    if (isPageLoading) return;
-    if (observer.current) observer.current.disconnect();
-    observer.current = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting && paginationParam) {
-        setPaginationCount((previousCount) => previousCount ? previousCount + 1 : 1)
-      }
-    });
-    if (node) observer.current.observe(node);
-  }, [isPageLoading]);
 
   useEffect(() => {
     const setInitialPosts = async () => {
@@ -47,27 +36,14 @@ export default function PostsFeed() {
       setPaginationParam(fetchReturn.after);
       setIsPageLoading(false);
     };
-    if (paginationCount) {
+    if (paginationCount && !isPageLoading) {
       setMorePosts();
     }
   }, [paginationCount])
 
-  const renderPostCards = () => (
-    redditPosts
-      .map(({ data }, index) => {
-        if (redditPosts.length === index + 1) {
-          return (
-            <PostCard
-              key={index}
-              title={data.title}
-              created_utc={data.created_utc}
-              author={data.author}
-              postUrl={data.url}
-              lastPostRef={lastPostElementRef}
-              media={data.media}
-            />
-          );
-        }
+  const renderPostCards = () => {
+    return(
+      redditPosts.map(({ data }, index) => {
         return (
           <PostCard
             key={index}
@@ -77,18 +53,26 @@ export default function PostsFeed() {
             postUrl={data.url}
             media={data.media}
           />
-        );
-      })
-  );
+        )})
+    );
+  }
+
+  const changeFeedPagination = () => {
+    const interaction = 1;
+    setPaginationCount((previousCount)=> previousCount ? previousCount + interaction : interaction);
+  }
 
   return (
-    <div className="posts-feed-wrapper">
+    <body className="posts-feed-wrapper">
       <main>
         { !redditPosts ? "loading..." : renderPostCards() }
       </main>
-      {/* <footer>
-      {paginationParam === null ? null : 'Você chegou ao final dos tópicos'}
-      </footer> */}
-    </div>
+      <footer>
+      <FindMoreButton 
+        changeFeedPagination={changeFeedPagination}
+      />
+      {/* {paginationParam === null ? null : 'Você chegou ao final dos tópicos'} */}
+      </footer>
+    </body>
   );
 }
