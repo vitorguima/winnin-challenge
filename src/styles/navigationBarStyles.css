@@ -1,0 +1,15 @@
+nav {
+  margin-top: 10vh;
+  margin-bottom: 4vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+
+.buttons-wrapper {
+  display: flex;
+  width: 27vw;
+  display: flex;
+  justify-content: space-evenly;
+}
+

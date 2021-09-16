@@ -65,13 +65,17 @@ export default function PostCard(props) {
     );
   };
 
-  // Criar uma função para tratar o tamanho do título, setando um length máx de caracteres
+  const treatsTitleCharacters = (title) => {
+    const decodedTitle = title.replace(/&amp;/g, '&');
+    return decodedTitle;
+  } 
+  
   return (
     <article 
       className="postcard-wrapper"
       ref={lastPostRef}
     >
-      <p>{title}</p>
+      <p>{treatsTitleCharacters(title)}</p>
       {renderCreationTime(created_utc, author)}
       <a
         href={postUrl} 

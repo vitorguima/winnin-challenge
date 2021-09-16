@@ -1,9 +1,11 @@
 import React from 'react';
 
+import '../styles/HeaderStyle.css';
+
 export default function Header() {
   return (
-    <div>
-      <p>Header</p>
-    </div>
+    <header className="header-style">
+      <p>Reddit Feed</p>
+    </header>
   )
 }

@@ -1,0 +1,19 @@
+.header-style {
+  background-color: #6324C6;
+  display: flex;
+  left: 0;
+  top: 0;
+  right: 0;
+  width: 100vw;
+  height: 8vh;
+  text-align: center;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-style p {
+  font-size: 30px;
+  color: #ffff;
+  font-weight: bolder;
+}

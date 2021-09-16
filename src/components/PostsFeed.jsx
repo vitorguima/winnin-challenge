@@ -80,7 +80,7 @@ export default function PostsFeed() {
   );
 
   return (
-    <div>
+    <div className="">
       <main>
         { !redditPosts ? "loading..." : renderPostCards() }
       </main>
