@@ -63,16 +63,16 @@ export default function PostsFeed() {
   }
 
   return (
-    <body className="posts-feed-wrapper">
+    <div className="posts-feed-wrapper">
       <main>
         { !redditPosts ? "loading..." : renderPostCards() }
       </main>
-      <footer>
+      <div>
       <FindMoreButton 
         changeFeedPagination={changeFeedPagination}
       />
       {/* {paginationParam === null ? null : 'Você chegou ao final dos tópicos'} */}
-      </footer>
-    </body>
+      </div>
+    </div>
   );
 }

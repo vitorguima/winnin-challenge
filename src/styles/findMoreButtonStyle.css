@@ -1,9 +1,12 @@
 .find-more-button {
+  align-items: center;
   background-color: #6324C6;
   border: none;
   border-radius: 8px;
-  font-size: 20px;
+  display: flex;
+  font-size: 1.2rem;
   height: 4vh;
+  justify-content: center;
   width: 90vw;
   color: #ffff;
   margin-top: 2vh;

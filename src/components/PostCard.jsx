@@ -74,18 +74,24 @@ export default function PostCard(props) {
     <article 
       className="postcard-wrapper"
     >
-      <div>
-        <p className="post-title">{treatsTitleCharacters(title)}</p>
-        {renderCreationTime(created_utc, author)}
+      <div className="post-thumbnail-wrapper">
+        <div className="post-thumbnail">
+        </div>
       </div>
-      <div>
-        <a
-          href={postUrl} 
-          target="blank"
-          className={`${validateLinkVisibility()} link-to-reddit`}
-        >
-          reddit.com
-        </a>
+      <div className="post-details-wrapper">
+        <div className="creation-data-wrapper">
+          <p className="post-title">{treatsTitleCharacters(title)}</p>
+          {renderCreationTime(created_utc, author)}
+        </div>
+        <div className="reddit-link-wrapper">
+          <a
+            href={postUrl} 
+            target="blank"
+            className={`${validateLinkVisibility()} link-to-reddit`}
+          >
+            reddit.com
+          </a>
+        </div>
       </div>
     </article>
   );
