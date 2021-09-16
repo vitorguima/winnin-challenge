@@ -1,7 +1,7 @@
 import React from 'react';
 import FilterButton from './FilterButton';
 
-import '../styles/navigationBarStyles.css';
+import '../styles/navigationBarStyle.css';
 
 export default function NavigationBar() {
   return (

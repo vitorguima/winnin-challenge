@@ -32,35 +32,36 @@ export default function PostCard(props) {
 
   const renderCreationTime = (dateInUnix, authorName) => {
     const hoursSinceCreation = calculateTopicPostAge(dateInUnix);
-    const userUrl = `https://www.reddit.com/user/${authorName}/`
+    const userUrl = `https://www.reddit.com/user/${authorName}/`;
+    const authorUrl = <a href={userUrl} className="author-name" target="_blank" rel="noreferrer">{authorName}</a>;
 
     if (hoursSinceCreation < 1) {
       return (
-        <p>
-          enviado há menos de uma hora por <a href={userUrl}>{authorName}</a>
+        <p className="post-creation-time">
+          enviado há menos de uma hora por {authorUrl}
         </p>
       );
     };
 
     if (hoursSinceCreation === 1) {
       return (
-        <p>
-          enviado há 1 hora por <a href={userUrl}>{authorName}</a>
+        <p className="post-creation-time">
+          enviado há 1 hora por {authorUrl}
         </p>
       );
     };
 
     if (hoursSinceCreation > 1 && hoursSinceCreation < 24) {
       return (
-        <p>
-          enviado há {hoursSinceCreation} horas por <a href={userUrl}>{authorName}</a>
+        <p className="post-creation-time">
+          enviado há {hoursSinceCreation} horas por {authorUrl}
         </p>
       );
     }
 
     return (
-      <p>
-        enviado há mais de um dia por <a href={userUrl}>{authorName}</a>
+      <p className="post-creation-time">
+        enviado há mais de um dia por {authorUrl}
       </p>
     );
   };
@@ -75,15 +76,19 @@ export default function PostCard(props) {
       className="postcard-wrapper"
       ref={lastPostRef}
     >
-      <p>{treatsTitleCharacters(title)}</p>
-      {renderCreationTime(created_utc, author)}
-      <a
-        href={postUrl} 
-        target="blank"
-        className={validateLinkVisibility()}
-      >
-        reddit.com
-      </a>
+      <div>
+        <p className="post-title">{treatsTitleCharacters(title)}</p>
+        {renderCreationTime(created_utc, author)}
+      </div>
+      <div>
+        <a
+          href={postUrl} 
+          target="blank"
+          className={`${validateLinkVisibility()} link-to-reddit`}
+        >
+          reddit.com
+        </a>
+      </div>
     </article>
   );
 }

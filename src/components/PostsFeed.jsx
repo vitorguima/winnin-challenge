@@ -6,6 +6,8 @@ import PostCard from '../components/PostCard';
 
 import getPostsList from '../services/getPostsList';
 
+import '../styles/postsFeedStyles.css';
+
 export default function PostsFeed() {
   const [isPageLoading, setIsPageLoading] = useState(false);
   const [redditPosts, setRedditPosts] = useState([]);
@@ -80,13 +82,13 @@ export default function PostsFeed() {
   );
 
   return (
-    <div className="">
+    <div className="posts-feed-wrapper">
       <main>
         { !redditPosts ? "loading..." : renderPostCards() }
       </main>
-      <footer>
-      {paginationParam ? null : 'Você chegou ao final dos tópicos'}
-      </footer>
+      {/* <footer>
+      {paginationParam === null ? null : 'Você chegou ao final dos tópicos'}
+      </footer> */}
     </div>
   );
 }
