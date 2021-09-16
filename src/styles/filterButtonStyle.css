@@ -1,5 +1,6 @@
 .button-not-pressed {
   background-color: #A7B0BE;
+  font-weight: bolder;
   width: 8vw;
   height: 4vh;
   display: flex;
@@ -10,6 +11,7 @@
 
 .button-is-pressed {
   background-color: #6324C6;
+  font-weight: bolder;
   width: 8vw;
   height: 4vh;
   display: flex;
@@ -24,6 +26,6 @@
 
 .filter-button {
   color: #ffff;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   text-decoration: none;
 }

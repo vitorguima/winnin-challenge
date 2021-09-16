@@ -1,6 +1,7 @@
 import React from 'react';
 
 import '../styles/postCardStyle.css';
+import noThumbnail from '../images/no-thumbnail.png';
 
 export default function PostCard(props) {
   const {
@@ -9,11 +10,22 @@ export default function PostCard(props) {
     created_utc,
     author,
     postUrl,
+    thumbnail,
   } = props;
 
   const validateLinkVisibility = () => {
     return media ? 'hidden-link' : 'visible-link'
   };
+
+  const validateThumbnailUrl = () => {
+    if (thumbnail === 'self') {
+      return (
+        <img src={noThumbnail} alt="no-post-preview" className="thumb-not-available" />
+      )
+    } return (
+      <img src={thumbnail} alt="post-preview" className="thumb-available" />
+    )
+  }
 
   const convertCreationDate =  (dateInUnix) => {
     const convertParam =  1000;
@@ -32,12 +44,12 @@ export default function PostCard(props) {
   const renderCreationTime = (dateInUnix, authorName) => {
     const hoursSinceCreation = calculateTopicPostAge(dateInUnix);
     const userUrl = `https://www.reddit.com/user/${authorName}/`;
-    const authorUrl = <a href={userUrl} className="author-name" target="_blank" rel="noreferrer">{authorName}</a>;
+    const redirectUrl = <a href={userUrl} className="author-name" target="_blank" rel="noreferrer">{authorName}</a>;
 
     if (hoursSinceCreation < 1) {
       return (
         <p className="post-creation-time">
-          enviado há menos de uma hora por {authorUrl}
+          enviado há menos de uma hora por {redirectUrl}
         </p>
       );
     };
@@ -45,7 +57,7 @@ export default function PostCard(props) {
     if (hoursSinceCreation === 1) {
       return (
         <p className="post-creation-time">
-          enviado há 1 hora por {authorUrl}
+          enviado há 1 hora por {redirectUrl}
         </p>
       );
     };
@@ -53,14 +65,14 @@ export default function PostCard(props) {
     if (hoursSinceCreation > 1 && hoursSinceCreation < 24) {
       return (
         <p className="post-creation-time">
-          enviado há {hoursSinceCreation} horas por {authorUrl}
+          enviado há {hoursSinceCreation} horas por {redirectUrl}
         </p>
       );
     }
 
     return (
       <p className="post-creation-time">
-        enviado há mais de um dia por {authorUrl}
+        enviado há mais de um dia por {redirectUrl}
       </p>
     );
   };
@@ -76,6 +88,7 @@ export default function PostCard(props) {
     >
       <div className="post-thumbnail-wrapper">
         <div className="post-thumbnail">
+          {validateThumbnailUrl()}
         </div>
       </div>
       <div className="post-details-wrapper">

@@ -10,6 +10,7 @@
   position: fixed;
   justify-content: center;
   align-items: center;
+  z-index: 1;
 }
 
 .header-style p {

@@ -52,6 +52,7 @@ export default function PostsFeed() {
             author={data.author}
             postUrl={data.url}
             media={data.media}
+            thumbnail={data.thumbnail}
           />
         )})
     );
@@ -59,7 +60,17 @@ export default function PostsFeed() {
 
   const changeFeedPagination = () => {
     const interaction = 1;
-    setPaginationCount((previousCount)=> previousCount ? previousCount + interaction : interaction);
+    if (paginationParam) {
+      setPaginationCount((previousCount)=> previousCount ? previousCount + interaction : interaction);
+    };
+  }
+
+  const renderEndOfPagination = () => {
+    return(
+      <div className="end-of-pagination">
+        <p>Você chegou ao fim da lista!</p>
+      </div>
+    );
   }
 
   return (
@@ -68,10 +79,11 @@ export default function PostsFeed() {
         { !redditPosts ? "loading..." : renderPostCards() }
       </main>
       <div>
+      {!paginationParam && paginationParam !== undefined ? renderEndOfPagination() : null}
       <FindMoreButton 
         changeFeedPagination={changeFeedPagination}
+        paginationParam={paginationParam}
       />
-      {/* {paginationParam === null ? null : 'Você chegou ao final dos tópicos'} */}
       </div>
     </div>
   );

@@ -5,6 +5,7 @@ import '../styles/findMoreButtonStyle.css';
 export default function FindMoreButton(props) {
   const {
     changeFeedPagination,
+    paginationParam,
   } = props;
 
   return (
@@ -12,8 +13,9 @@ export default function FindMoreButton(props) {
       type="button"
       onClick={() => changeFeedPagination()}
       className="find-more-button"
+      disabled={!paginationParam ? true : false}
     >
       + Ver mais
     </button>
-  )
+  );
 }

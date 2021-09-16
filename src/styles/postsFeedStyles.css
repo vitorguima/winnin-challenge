@@ -9,3 +9,9 @@ body {
   justify-content: center;
   width: 100vw;
 }
+
+.end-of-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

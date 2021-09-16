@@ -5,7 +5,7 @@ import '../styles/headerStyle.css';
 export default function Header() {
   return (
     <header className="header-style">
-      <p>Reddit Feed</p>
+      <p>REACTJS</p>
     </header>
-  )
+  );
 }
