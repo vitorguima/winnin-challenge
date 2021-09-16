@@ -3,7 +3,7 @@ export default async function getPostsList(topicType, paginationParam) {
   try {
     const getPostsRequest = await fetch(ENDPOINT);
     const response = await getPostsRequest.json();
-    const data = response.data;
+    const { data } = response;
     return data;
   } catch (error) {
     return error;

@@ -13,9 +13,9 @@ export default function FindMoreButton(props) {
   return (
     <button
       type="button"
-      onClick={() => changeFeedPagination()}
+      onClick={ () => changeFeedPagination() }
       className="find-more-button"
-      disabled={!paginationParam ? true : false}
+      disabled={ !paginationParam }
     >
       + Ver mais
     </button>

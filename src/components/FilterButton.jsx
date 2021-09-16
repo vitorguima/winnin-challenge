@@ -12,11 +12,13 @@ export default function FilterButton(props) {
   const currentPath = getCurrentRoute.pathname;
 
   const definePressedButton = () => {
-    return currentPath === `/${pathRoute}` ? 'button-is-pressed' : 'button-not-pressed';
+    if (currentPath === `/${pathRoute}`) {
+      return 'button-is-pressed';
+    } return 'button-not-pressed';
   };
 
   return (
-    <Link to={pathRoute} className="filter-button">
+    <Link to={ pathRoute } className="filter-button">
       <div className={ `${definePressedButton()}` }>
         <span>
           {buttonLabel}

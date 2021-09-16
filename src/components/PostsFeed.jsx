@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import { useLocation } from 'react-router-dom';
 
-import PostCard from '../components/PostCard';
+import PostCard from './PostCard';
 import LoadingSvg from '../assets/Loading.svg';
 
 import getPostsList from '../services/getPostsList';
@@ -27,7 +27,7 @@ export default function PostsFeed() {
       setIsPageLoading(false);
     };
     setInitialPosts();
-  }, [currentPath])
+  }, [currentPath]);
 
   useEffect(() => {
     const setMorePosts = async () => {
@@ -40,47 +40,45 @@ export default function PostsFeed() {
     if (paginationCount && !isPageLoading) {
       setMorePosts();
     }
-  }, [paginationCount])
+  }, [paginationCount]);
 
-  const renderPostCards = () => {
-    return (
-      redditPosts.map(({ data }, index) => {
-        return (
-          <PostCard
-            key={index}
-            title={data.title}
-            created_utc={data.created_utc}
-            author={data.author}
-            postUrl={data.url}
-            media={data.media}
-            thumbnail={data.thumbnail}
-          />
-        )})
-    );
-  }
+  const renderPostCards = () => (
+    redditPosts.map(({ data }, index) => (
+      <PostCard
+        key={ index }
+        title={ data.title }
+        createdUtc={ data.created_utc }
+        author={ data.author }
+        postUrl={ data.url }
+        media={ data.media }
+        thumbnail={ data.thumbnail }
+      />
+    ))
+  );
 
   const changeFeedPagination = () => {
     const interaction = 1;
     if (paginationParam) {
-      setPaginationCount((previousCount)=> previousCount ? previousCount + interaction : interaction);
+      setPaginationCount((previousCount) => {
+        if (previousCount) {
+          return (previousCount + interaction);
+        }
+        return (interaction);
+      });
     }
-  }
+  };
 
-  const renderEndOfPagination = () => {
-    return (
-      <div className="end-of-pagination">
-        <p>Você chegou ao fim da lista!</p>
-      </div>
-    );
-  }
-  
-  const renderLoadingSvg = () => {
-    return (
-      <div className="loading-wrapper">
-        <img src={LoadingSvg} alt="loading" />
-      </div>
-    )
-  }
+  const renderEndOfPagination = () => (
+    <div className="end-of-pagination">
+      <p>Você chegou ao fim da lista!</p>
+    </div>
+  );
+
+  const renderLoadingSvg = () => (
+    <div className="loading-wrapper">
+      <img src={ LoadingSvg } alt="loading" />
+    </div>
+  );
 
   return (
     <div className="posts-feed-wrapper">
@@ -88,12 +86,12 @@ export default function PostsFeed() {
         { !redditPosts ? null : renderPostCards() }
       </main>
       <footer className="footer-wrapper">
-      {isPageLoading ? renderLoadingSvg() : null}
-      {!paginationParam && paginationCount > 0 ? renderEndOfPagination() : null}
-      <FindMoreButton 
-        changeFeedPagination={changeFeedPagination}
-        paginationParam={paginationParam}
-      />
+        {isPageLoading ? renderLoadingSvg() : null}
+        {!paginationParam && paginationCount > 0 ? renderEndOfPagination() : null}
+        <FindMoreButton
+          changeFeedPagination={ changeFeedPagination }
+          paginationParam={ paginationParam }
+        />
       </footer>
     </div>
   );
