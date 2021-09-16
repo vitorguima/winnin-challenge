@@ -14,12 +14,12 @@ export default function FilterButton(props) {
   };
 
   return (
-    <div className={ `${definePressedButton()}` }>
-      <Link to={pathRoute}>
+    <Link to={pathRoute} className="filter-button">
+      <div className={ `${definePressedButton()}` }>
         <span>
           {buttonLabel}
         </span>
-      </Link>
-    </div>
+      </div>
+    </Link>
   );
 }

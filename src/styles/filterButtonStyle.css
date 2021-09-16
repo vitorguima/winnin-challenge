@@ -18,17 +18,11 @@
   border-radius: 8px;
 }
 
-.button-not-pressed a {
-  color: #ffff;
-  font-size: 20px;
-  text-decoration: none;
-}
-
 .button-not-pressed:hover {
   background-color: #6324C6;
 }
 
-.button-is-pressed a {
+.filter-button {
   color: #ffff;
   font-size: 20px;
   text-decoration: none;
