@@ -1,23 +1,23 @@
 .button-not-pressed {
-  background-color: #A7B0BE;
-  font-weight: bolder;
-  width: 8vw;
-  height: 4vh;
-  display: flex;
-  justify-content: center;
   align-items: center;
+  background-color: #A7B0BE;
   border-radius: 8px;
+  display: flex;
+  font-weight: bolder;
+  height: 4vh;
+  justify-content: center;
+  width: 8vw;
 }
 
 .button-is-pressed {
-  background-color: #6324C6;
-  font-weight: bolder;
-  width: 8vw;
-  height: 4vh;
-  display: flex;
-  justify-content: center;
   align-items: center;
+  background-color: #6324C6;
   border-radius: 8px;
+  display: flex;
+  font-weight: bolder;
+  height: 4vh;
+  justify-content: center;
+  width: 8vw;
 }
 
 .button-not-pressed:hover {

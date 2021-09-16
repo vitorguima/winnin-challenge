@@ -3,16 +3,16 @@
   background-color: #6324C6;
   border: none;
   border-radius: 8px;
+  cursor: pointer;
+  color: #ffff;
   display: flex;
   font-size: 1.2rem;
+  font-weight: bolder;
   height: 4vh;
   justify-content: center;
-  width: 90vw;
-  color: #ffff;
-  font-weight: bolder;
   margin-top: 2vh;
   margin-bottom: 2vh;
-  cursor: pointer;
+  width: 90vw;
 }
 
 .find-more-button:hover {

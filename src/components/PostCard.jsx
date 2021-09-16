@@ -128,4 +128,3 @@ PostCard.propTypes = {
   postUrl: PropTypes.string,
   thumbnail: PropTypes.string,
 }.isRequired;
-

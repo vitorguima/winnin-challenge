@@ -1,15 +1,15 @@
 .header-style {
+  align-items: center;
   background-color: #6324C6;
   display: flex;
-  left: 0;
-  top: 0;
-  right: 0;
-  width: 100vw;
   height: 8vh;
-  text-align: center;
-  position: fixed;
   justify-content: center;
-  align-items: center;
+  left: 0;
+  position: fixed;
+  right: 0;
+  text-align: center;
+  top: 0;
+  width: 100vw;
   z-index: 1;
 }
 

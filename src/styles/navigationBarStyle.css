@@ -1,14 +1,13 @@
 nav {
+  display: flex;
+  justify-content: center;
   margin-top: 10vh;
   margin-bottom: 3vh;
   width: 100vw;
-  display: flex;
-  justify-content: center;
 }
 
 .buttons-wrapper {
   display: flex;
-  width: 27vw;
-  display: flex;
   justify-content: space-evenly;
+  width: 27vw;
 }
