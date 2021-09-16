@@ -1,5 +1,7 @@
 import React from 'react';
 
+import PropTypes from 'prop-types';
+
 import '../styles/findMoreButtonStyle.css';
 
 export default function FindMoreButton(props) {
@@ -19,3 +21,8 @@ export default function FindMoreButton(props) {
     </button>
   );
 }
+
+FindMoreButton.propTypes = {
+  changeFeedPagination: PropTypes.func,
+  paginationParam: PropTypes.string,
+}.isRequired;

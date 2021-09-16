@@ -1,5 +1,7 @@
 import React from 'react';
 
+import PropTypes from 'prop-types';
+
 import { Link, useLocation } from 'react-router-dom';
 
 import '../styles/filterButtonStyle.css';
@@ -23,3 +25,8 @@ export default function FilterButton(props) {
     </Link>
   );
 }
+
+FilterButton.propTypes = {
+  buttonLabel: PropTypes.string,
+  pathRoute: PropTypes.string,
+}.isRequired;

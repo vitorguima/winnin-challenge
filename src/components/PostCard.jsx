@@ -1,6 +1,9 @@
 import React from 'react';
 
+import PropTypes from 'prop-types';
+
 import '../styles/postCardStyle.css';
+
 import noThumbnail from '../images/no-thumbnail.png';
 
 export default function PostCard(props) {
@@ -20,10 +23,17 @@ export default function PostCard(props) {
   const validateThumbnailUrl = () => {
     if (thumbnail === 'self') {
       return (
-        <img src={noThumbnail} alt="no-post-preview" className="thumb-not-available" />
+        <img src={noThumbnail}
+          alt="no-post-preview"
+          className="thumb-not-available"
+        />
       )
     } return (
-      <img src={thumbnail} alt="post-preview" className="thumb-available" />
+      <img
+        src={thumbnail}
+        alt="post-preview"
+        className="thumb-available"
+      />
     )
   }
 
@@ -52,7 +62,7 @@ export default function PostCard(props) {
           enviado há menos de uma hora por {redirectUrl}
         </p>
       );
-    };
+    }
 
     if (hoursSinceCreation === 1) {
       return (
@@ -60,7 +70,7 @@ export default function PostCard(props) {
           enviado há 1 hora por {redirectUrl}
         </p>
       );
-    };
+    }
 
     if (hoursSinceCreation > 1 && hoursSinceCreation < 24) {
       return (
@@ -109,3 +119,13 @@ export default function PostCard(props) {
     </article>
   );
 }
+
+PostCard.propTypes = {
+  media: PropTypes.string,
+  title: PropTypes.string,
+  created_utc: PropTypes.string,
+  author: PropTypes.string,
+  postUrl: PropTypes.string,
+  thumbnail: PropTypes.string,
+}.isRequired;
+

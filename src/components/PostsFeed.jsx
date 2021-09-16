@@ -62,7 +62,7 @@ export default function PostsFeed() {
     const interaction = 1;
     if (paginationParam) {
       setPaginationCount((previousCount)=> previousCount ? previousCount + interaction : interaction);
-    };
+    }
   }
 
   const renderEndOfPagination = () => {
