@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import PostCard from '../components/PostCard';
+import LoadingSvg from '../assets/Loading.svg';
 
 import getPostsList from '../services/getPostsList';
 
@@ -42,7 +43,7 @@ export default function PostsFeed() {
   }, [paginationCount])
 
   const renderPostCards = () => {
-    return(
+    return (
       redditPosts.map(({ data }, index) => {
         return (
           <PostCard
@@ -66,25 +67,34 @@ export default function PostsFeed() {
   }
 
   const renderEndOfPagination = () => {
-    return(
+    return (
       <div className="end-of-pagination">
         <p>Você chegou ao fim da lista!</p>
       </div>
     );
   }
+  
+  const renderLoadingSvg = () => {
+    return (
+      <div className="loading-wrapper">
+        <img src={LoadingSvg} alt="loading" />
+      </div>
+    )
+  }
 
   return (
     <div className="posts-feed-wrapper">
       <main>
-        { !redditPosts ? "loading..." : renderPostCards() }
+        { !redditPosts ? null : renderPostCards() }
       </main>
-      <div>
-      {!paginationParam && paginationParam !== undefined ? renderEndOfPagination() : null}
+      <footer className="footer-wrapper">
+      {isPageLoading ? renderLoadingSvg() : null}
+      {!paginationParam && paginationCount > 0 ? renderEndOfPagination() : null}
       <FindMoreButton 
         changeFeedPagination={changeFeedPagination}
         paginationParam={paginationParam}
       />
-      </div>
+      </footer>
     </div>
   );
 }

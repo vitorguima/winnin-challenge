@@ -15,3 +15,19 @@ body {
   display: flex;
   justify-content: center;
 }
+
+.loading-wrapper {
+  height: 5%;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.footer-wrapper {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100vw;
+}
