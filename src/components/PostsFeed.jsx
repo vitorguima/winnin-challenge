@@ -1,14 +1,16 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
 
 import { useLocation } from 'react-router-dom';
 
 import PostCard from './PostCard';
-import LoadingSvg from '../assets/Loading.svg';
 
 import getPostsList from '../services/getPostsList';
 
 import '../styles/postsFeedStyles.css';
+
 import FindMoreButton from './FindMoreButton';
+import PageLoader from './PageLoader';
 
 export default function PostsFeed() {
   const [isPageLoading, setIsPageLoading] = useState(false);
@@ -42,6 +44,11 @@ export default function PostsFeed() {
     }
   }, [paginationCount]);
 
+  useEffect(() => {
+    setPaginationCount(0);
+    setRedditPosts([]);
+  }, [currentPath]);
+
   const renderPostCards = () => (
     redditPosts.map(({ data }, index) => (
       <PostCard
@@ -74,19 +81,18 @@ export default function PostsFeed() {
     </div>
   );
 
-  const renderLoadingSvg = () => (
-    <div className="loading-wrapper">
-      <img src={ LoadingSvg } alt="loading" />
-    </div>
-  );
-
   return (
     <div className="posts-feed-wrapper">
       <main>
+        <PageLoader
+          visibility={ !paginationCount && isPageLoading }
+        />
         { !redditPosts ? null : renderPostCards() }
       </main>
       <footer className="footer-wrapper">
-        {isPageLoading ? renderLoadingSvg() : null}
+        <PageLoader
+          visibility={ paginationCount > 0 && isPageLoading }
+        />
         {!paginationParam && paginationCount > 0 ? renderEndOfPagination() : null}
         <FindMoreButton
           changeFeedPagination={ changeFeedPagination }

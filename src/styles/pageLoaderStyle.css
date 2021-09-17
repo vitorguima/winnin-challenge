@@ -1,0 +1,11 @@
+.loading-wrapper {
+  height: 5%;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.hidden-loader {
+  display: none;
+}
