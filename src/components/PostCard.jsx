@@ -14,6 +14,7 @@ export default function PostCard(props) {
     author,
     postUrl,
     thumbnail,
+    testid,
   } = props;
 
   const validateLinkVisibility = () => (media ? 'hidden-link' : 'visible-link');
@@ -117,7 +118,10 @@ export default function PostCard(props) {
     <article
       className="postcard-wrapper"
     >
-      <div className="post-thumbnail-wrapper">
+      <div
+        className="post-thumbnail-wrapper"
+        data-testid={ `postcard-${testid}` }
+      >
         <div className="post-thumbnail">
           {validateThumbnailUrl()}
         </div>
@@ -148,4 +152,5 @@ PostCard.propTypes = {
   author: PropTypes.string,
   postUrl: PropTypes.string,
   thumbnail: PropTypes.string,
+  testid: PropTypes.number,
 }.isRequired;

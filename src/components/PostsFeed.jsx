@@ -24,6 +24,7 @@ export default function PostsFeed() {
     const setInitialPosts = async () => {
       setIsPageLoading(true);
       const fetchReturn = await getPostsList(currentPath, '');
+      console.log(fetchReturn);
       setPaginationParam(fetchReturn.after);
       setRedditPosts([...fetchReturn.children]);
       setIsPageLoading(false);
@@ -53,6 +54,7 @@ export default function PostsFeed() {
     redditPosts.map(({ data }, index) => (
       <PostCard
         key={ index }
+        testid={ index }
         title={ data.title }
         createdUtc={ data.created_utc }
         author={ data.author }
