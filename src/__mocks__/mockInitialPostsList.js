@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-const mockPostsList = {
+const mockInitialPostsList = {
   data: {
     after: 't3_pq2ke4',
     children: [
@@ -47,6 +47,4 @@ const mockPostsList = {
   },
 };
 
-export default {
-  getPostsList: jest.fn().mockResolvedValue(mockPostsList),
-};
+export default mockInitialPostsList;

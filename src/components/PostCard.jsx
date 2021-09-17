@@ -14,7 +14,7 @@ export default function PostCard(props) {
     author,
     postUrl,
     thumbnail,
-    testid,
+    testId,
   } = props;
 
   const validateLinkVisibility = () => (media ? 'hidden-link' : 'visible-link');
@@ -68,7 +68,10 @@ export default function PostCard(props) {
 
     if (hoursSinceCreation < 1) {
       return (
-        <p className="post-creation-time">
+        <p
+          className="post-creation-time"
+          data-testid={ `since-creation-${testId}` }
+        >
           enviado há menos de uma hora por
           {' '}
           {redirectUrl}
@@ -78,7 +81,10 @@ export default function PostCard(props) {
 
     if (hoursSinceCreation === 1) {
       return (
-        <p className="post-creation-time">
+        <p
+          className="post-creation-time"
+          data-testid={ `since-creation-${testId}` }
+        >
           enviado há 1 hora por
           {' '}
           {redirectUrl}
@@ -88,7 +94,10 @@ export default function PostCard(props) {
 
     if (hoursSinceCreation > 1 && hoursSinceCreation < oneDayInHour) {
       return (
-        <p className="post-creation-time">
+        <p
+          className="post-creation-time"
+          data-testid={ `since-creation-${testId}` }
+        >
           enviado há
           {' '}
           {hoursSinceCreation}
@@ -101,7 +110,10 @@ export default function PostCard(props) {
     }
 
     return (
-      <p className="post-creation-time">
+      <p
+        className="post-creation-time"
+        data-testid={ `since-creation-${testId}` }
+      >
         enviado há mais de um dia por
         {' '}
         {redirectUrl}
@@ -120,7 +132,7 @@ export default function PostCard(props) {
     >
       <div
         className="post-thumbnail-wrapper"
-        data-testid={ `postcard-${testid}` }
+        data-testid={ `postcard-${testId}` }
       >
         <div className="post-thumbnail">
           {validateThumbnailUrl()}
@@ -152,5 +164,5 @@ PostCard.propTypes = {
   author: PropTypes.string,
   postUrl: PropTypes.string,
   thumbnail: PropTypes.string,
-  testid: PropTypes.number,
+  testId: PropTypes.number,
 }.isRequired;
