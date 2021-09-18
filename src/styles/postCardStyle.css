@@ -9,7 +9,7 @@
   align-items: center;
   display: flex;
   margin-right: 2%;
-  width: 8%;
+  width: 10%;
 }
 
 .post-thumbnail {
@@ -36,10 +36,12 @@
 
 .post-title {
   font-weight: bolder;
+  font-size: 1.2rem;
 }
 
 .post-creation-time {
   color: #4C5667;
+  font-size: 1rem;
 }
 
 .author-name {
@@ -56,7 +58,7 @@
   flex-direction: column;
   height: 100%;
   justify-content: center;
-  width: 92%;
+  width: 90%;
 }
 
 .creation-data-wrapper {
@@ -88,8 +90,91 @@
   color: #000000;
   font-weight: bolder;
   text-decoration: none;
+  font-size: 1rem;
 }
 
 .link-to-reddit:hover {
   text-decoration: underline;
 }
+
+@media only screen and (max-width: 1200px) and (min-width: 880px) {
+  .post-thumbnail-wrapper {
+    width: 15%;
+  }
+
+  .post-details-wrapper{
+    width: 85%;
+  }
+  
+}
+
+@media only screen and (max-width: 879px) and (min-width: 580px) {
+  .post-thumbnail-wrapper {
+    width: 20%;
+  }
+
+  .post-details-wrapper{
+    width: 80%;
+  }
+
+  .post-title {
+    font-size: 1rem;
+  }
+
+  .postcard-wrapper {
+    height: 15vh;
+  }
+}
+
+@media only screen and (max-width: 579px) and (min-width: 480px) {
+  .post-thumbnail-wrapper {
+    width: 25%;
+  }
+
+  .post-details-wrapper{
+    width: 75%;
+  }
+
+  .post-title {
+    font-size: 0.9rem;
+  }
+
+  .post-creation-time {
+    font-size: 0.9rem;
+  }
+
+  .link-to-reddit {
+    font-size: 0.9rem;
+  }
+
+  .postcard-wrapper {
+    height: 15vh;
+  }
+}
+
+@media only screen and (max-width: 479px){
+  .post-thumbnail-wrapper {
+    width: 30%;
+  }
+
+  .post-details-wrapper{
+    width: 60%;
+  }
+
+  .postcard-wrapper {
+    height: 18vh;
+  }
+
+  .post-title {
+    font-size: 0.6rem;
+  }
+
+  .post-creation-time {
+    font-size: 0.6rem;
+  }
+
+  .link-to-reddit {
+    font-size: 0.6rem;
+  }
+}
+
