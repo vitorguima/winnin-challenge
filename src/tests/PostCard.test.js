@@ -15,17 +15,29 @@ describe('tests PostsDiscovery dynamic elements renderization', () => {
   });
 
   it('check if posts list cards are rendered', async () => {
-    const expectedTotalImages = 4;
+    const expectedWithNoThumb = 3;
+    const expectedWithThumb = 1;
     const { findByTestId, findAllByAltText } = renderWithRouter(<PostsDiscovery />);
     const postCard = await findByTestId('postcard-0');
     expect(postCard).toBeInTheDocument();
-    const totalImages = await findAllByAltText('no-post-preview');
-    expect(totalImages.length).toBe(expectedTotalImages);
+    const totalNoThumbs = await findAllByAltText('no-post-preview');
+    expect(totalNoThumbs.length).toBe(expectedWithNoThumb);
+    const totalWithThumbs = await findAllByAltText('post-preview');
+    expect(totalWithThumbs.length).toBe(expectedWithThumb);
   });
 
   it('check if the time since the post creation is rendered', async () => {
     const { findByTestId } = renderWithRouter(<PostsDiscovery />);
     const hoursSinceCreation = await findByTestId('since-creation-0');
     expect(hoursSinceCreation).toBeInTheDocument();
+  });
+
+  it('check if the thumbnails are rendered', async () => {
+    const expectedTotalThumbs = 4;
+    const { findByTestId, findAllByTestId } = renderWithRouter(<PostsDiscovery />);
+    const thubmnail = await findByTestId('thumbnail-0');
+    expect(thubmnail).toBeInTheDocument();
+    const totalThumbnails = await findAllByTestId(/thumbnail-/i);
+    expect(totalThumbnails.length).toBe(expectedTotalThumbs);
   });
 });

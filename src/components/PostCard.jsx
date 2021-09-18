@@ -26,6 +26,7 @@ export default function PostCard(props) {
           src={ noThumbnail }
           alt="no-post-preview"
           className="thumb-not-available"
+          data-testid={ `thumbnail-${testId}` }
         />
       );
     } return (
@@ -33,6 +34,7 @@ export default function PostCard(props) {
         src={ thumbnail }
         alt="post-preview"
         className="thumb-available"
+        data-testid={ `thumbnail-${testId}` }
       />
     );
   };

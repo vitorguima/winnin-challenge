@@ -10,7 +10,7 @@ const mockInitialPostsList = {
           author: 'dance2die',
           url: 'https://www.reddit.com/r/reactjs/comments/pfxhmm/beginners_thread_easy_questions_september_2021/',
           media: null,
-          thumbnail: 'self',
+          thumbnail: 'https://b.thumbs.redditmedia.com/pyEel1BGbqJlBEQp2jZlVnsPxtLhUGJFAvNcz6aJ5ts.jpg',
         },
       },
       {
