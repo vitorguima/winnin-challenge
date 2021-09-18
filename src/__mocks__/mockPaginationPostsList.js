@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
-const mockInitialPostsList = {
+const PaginationPostsList = {
   data: {
-    after: 't3_pq2ke4',
+    after: null,
     children: [
       {
         data: {
@@ -47,4 +47,4 @@ const mockInitialPostsList = {
   },
 };
 
-export default mockInitialPostsList;
+export default PaginationPostsList;

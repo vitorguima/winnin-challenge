@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React from 'react';
 import PostsDiscovery from '../pages/PostsDiscovery';
 import renderWithRouter from './RenderWithRouter';
@@ -31,6 +32,22 @@ describe('tests PostsDiscovery dynamic elements renderization', () => {
     const hoursSinceCreation = await findByTestId('since-creation-0');
     expect(hoursSinceCreation).toBeInTheDocument();
   });
+
+  it('check if posts with creation time less than one hour are rendered correctly', async () => {
+    const { findByText, findAllByText } = renderWithRouter(<PostsDiscovery />);
+    const createdPost = await findByText('enviado há menos de uma hora por');
+    expect(createdPost).toBeInTheDocument();
+    const totalPosts = await findAllByText('enviado há menos de uma hora por');
+    expect(totalPosts.length).toBe(1);
+  });
+
+  // it('check if posts with creation time equal to one hour are rendered correctly', async () => {
+  //   const { findByText, findAllByText } = renderWithRouter(<PostsDiscovery />);
+  //   const createdPost = await findByText('enviado há uma hora por');
+  //   expect(createdPost).toBeInTheDocument();
+  //   const totalPosts = await findAllByText('enviado há uma hora por');
+  //   expect(totalPosts.length).toBe(1);
+  // });
 
   it('check if the thumbnails are rendered', async () => {
     const expectedTotalThumbs = 4;
