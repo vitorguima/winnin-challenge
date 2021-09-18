@@ -7,6 +7,7 @@ describe('tests PostsDiscovery static elements renderization', () => {
     const { getByText } = renderWithRouter(<PostDiscovery />);
     const reactText = getByText('REACT');
     const jsText = getByText('JS');
+
     expect(reactText).toBeInTheDocument();
     expect(jsText).toBeInTheDocument();
   });
@@ -16,6 +17,7 @@ describe('tests PostsDiscovery static elements renderization', () => {
     const hotButton = getByText('Hot');
     const newsButton = getByText('News');
     const risingButton = getByText('Rising');
+
     expect(hotButton).toBeInTheDocument();
     expect(newsButton).toBeInTheDocument();
     expect(risingButton).toBeInTheDocument();
@@ -24,6 +26,7 @@ describe('tests PostsDiscovery static elements renderization', () => {
   it('check if FindMoreButton button is rendered', () => {
     const { getByText } = renderWithRouter(<PostDiscovery />);
     const findMoreButton = getByText('+ Ver mais');
+
     expect(findMoreButton).toBeInTheDocument();
   });
 });

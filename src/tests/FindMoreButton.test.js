@@ -36,7 +36,6 @@ describe('tests PostsDiscovery dynamic elements renderization', () => {
     const { findByText } = renderWithRouter(<PostsFeed />);
     const findMoreButton = await findByText('+ Ver mais');
     fireEvent.click(findMoreButton);
-
     const endOfPageSign = await findByText('Você chegou ao fim da lista!');
     expect(endOfPageSign).toBeInTheDocument();
   });

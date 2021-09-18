@@ -10,6 +10,7 @@ describe('tests PostsDiscovery dynamic elements renderization', () => {
     const { getByText, history } = renderWithRouter(<PostsDiscovery />);
     const hotButton = getByText('Hot');
     expect(hotButton).toBeInTheDocument();
+
     fireEvent.click(hotButton);
     const { pathname } = history.location;
     expect(pathname).toBe('/hot');
@@ -19,6 +20,7 @@ describe('tests PostsDiscovery dynamic elements renderization', () => {
     const { getByText, history } = renderWithRouter(<PostsDiscovery />);
     const newButton = getByText('News');
     expect(newButton).toBeInTheDocument();
+
     fireEvent.click(newButton);
     const { pathname } = history.location;
     expect(pathname).toBe('/new');
@@ -28,6 +30,7 @@ describe('tests PostsDiscovery dynamic elements renderization', () => {
     const { getByText, history } = renderWithRouter(<PostsDiscovery />);
     const risingButton = getByText('Rising');
     expect(risingButton).toBeInTheDocument();
+
     fireEvent.click(risingButton);
     const { pathname } = history.location;
     expect(pathname).toBe('/rising');

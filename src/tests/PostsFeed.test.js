@@ -18,10 +18,13 @@ describe('tests PostsDiscovery dynamic elements renderization', () => {
     const { findByTestId } = renderWithRouter(<PostsFeed />);
     const postCardDiv0 = await findByTestId('postcard-0');
     expect(postCardDiv0).toBeInTheDocument();
+
     const postCardDiv1 = await findByTestId('postcard-1');
     expect(postCardDiv1).toBeInTheDocument();
+
     const postCardDiv2 = await findByTestId('postcard-2');
     expect(postCardDiv2).toBeInTheDocument();
+
     const postCardDiv3 = await findByTestId('postcard-3');
     expect(postCardDiv3).toBeInTheDocument();
   });

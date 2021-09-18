@@ -21,8 +21,10 @@ describe('tests PostsDiscovery dynamic elements renderization', () => {
     const { findByTestId, findAllByAltText } = renderWithRouter(<PostsDiscovery />);
     const postCard = await findByTestId('postcard-0');
     expect(postCard).toBeInTheDocument();
+
     const totalNoThumbs = await findAllByAltText('no-post-preview');
     expect(totalNoThumbs.length).toBe(expectedWithNoThumb);
+
     const totalWithThumbs = await findAllByAltText('post-preview');
     expect(totalWithThumbs.length).toBe(expectedWithThumb);
   });
@@ -37,17 +39,10 @@ describe('tests PostsDiscovery dynamic elements renderization', () => {
     const { findByText, findAllByText } = renderWithRouter(<PostsDiscovery />);
     const createdPost = await findByText('enviado há menos de uma hora por');
     expect(createdPost).toBeInTheDocument();
+
     const totalPosts = await findAllByText('enviado há menos de uma hora por');
     expect(totalPosts.length).toBe(1);
   });
-
-  // it('check if posts with creation time equal to one hour are rendered correctly', async () => {
-  //   const { findByText, findAllByText } = renderWithRouter(<PostsDiscovery />);
-  //   const createdPost = await findByText('enviado há uma hora por');
-  //   expect(createdPost).toBeInTheDocument();
-  //   const totalPosts = await findAllByText('enviado há uma hora por');
-  //   expect(totalPosts.length).toBe(1);
-  // });
 
   it('check if the thumbnails are rendered', async () => {
     const expectedTotalThumbs = 4;
