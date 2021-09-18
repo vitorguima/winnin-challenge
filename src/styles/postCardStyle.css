@@ -105,6 +105,7 @@
   .post-details-wrapper{
     width: 85%;
   }
+  
 }
 
 @media only screen and (max-width: 879px) and (min-width: 580px) {
@@ -118,6 +119,10 @@
 
   .post-title {
     font-size: 1rem;
+  }
+
+  .postcard-wrapper {
+    height: 15vh;
   }
 }
 
@@ -140,6 +145,10 @@
 
   .link-to-reddit {
     font-size: 0.9rem;
+  }
+
+  .postcard-wrapper {
+    height: 15vh;
   }
 }
 

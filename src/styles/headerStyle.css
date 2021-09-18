@@ -26,3 +26,10 @@
 .header-title-js {
   color: #ffa500;
 }
+
+
+@media only screen and (max-width: 479px) {
+  .header-style p {
+    font-size: 1.5rem;
+  }
+}

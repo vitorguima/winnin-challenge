@@ -18,3 +18,10 @@
 .find-more-button:hover {
   background-color: #4d1d9b;
 }
+
+@media only screen and (max-width: 479px) {
+  .find-more-button {
+    height: 7vh;
+    font-size: 1rem;
+  }
+}
