@@ -14,6 +14,7 @@ export default function PostCard(props) {
     author,
     postUrl,
     thumbnail,
+    testId,
   } = props;
 
   const validateLinkVisibility = () => (media ? 'hidden-link' : 'visible-link');
@@ -25,6 +26,7 @@ export default function PostCard(props) {
           src={ noThumbnail }
           alt="no-post-preview"
           className="thumb-not-available"
+          data-testid={ `thumbnail-${testId}` }
         />
       );
     } return (
@@ -32,6 +34,7 @@ export default function PostCard(props) {
         src={ thumbnail }
         alt="post-preview"
         className="thumb-available"
+        data-testid={ `thumbnail-${testId}` }
       />
     );
   };
@@ -67,7 +70,10 @@ export default function PostCard(props) {
 
     if (hoursSinceCreation < 1) {
       return (
-        <p className="post-creation-time">
+        <p
+          className="post-creation-time"
+          data-testid={ `since-creation-${testId}` }
+        >
           enviado há menos de uma hora por
           {' '}
           {redirectUrl}
@@ -77,7 +83,10 @@ export default function PostCard(props) {
 
     if (hoursSinceCreation === 1) {
       return (
-        <p className="post-creation-time">
+        <p
+          className="post-creation-time"
+          data-testid={ `since-creation-${testId}` }
+        >
           enviado há 1 hora por
           {' '}
           {redirectUrl}
@@ -87,7 +96,10 @@ export default function PostCard(props) {
 
     if (hoursSinceCreation > 1 && hoursSinceCreation < oneDayInHour) {
       return (
-        <p className="post-creation-time">
+        <p
+          className="post-creation-time"
+          data-testid={ `since-creation-${testId}` }
+        >
           enviado há
           {' '}
           {hoursSinceCreation}
@@ -100,7 +112,10 @@ export default function PostCard(props) {
     }
 
     return (
-      <p className="post-creation-time">
+      <p
+        className="post-creation-time"
+        data-testid={ `since-creation-${testId}` }
+      >
         enviado há mais de um dia por
         {' '}
         {redirectUrl}
@@ -117,7 +132,10 @@ export default function PostCard(props) {
     <article
       className="postcard-wrapper"
     >
-      <div className="post-thumbnail-wrapper">
+      <div
+        className="post-thumbnail-wrapper"
+        data-testid={ `postcard-${testId}` }
+      >
         <div className="post-thumbnail">
           {validateThumbnailUrl()}
         </div>
@@ -148,4 +166,5 @@ PostCard.propTypes = {
   author: PropTypes.string,
   postUrl: PropTypes.string,
   thumbnail: PropTypes.string,
+  testId: PropTypes.number,
 }.isRequired;

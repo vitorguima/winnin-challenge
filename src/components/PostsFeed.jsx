@@ -53,6 +53,7 @@ export default function PostsFeed() {
     redditPosts.map(({ data }, index) => (
       <PostCard
         key={ index }
+        testId={ index }
         title={ data.title }
         createdUtc={ data.created_utc }
         author={ data.author }
