@@ -56,10 +56,10 @@
   }
   
   .button-is-pressed {
-    height: 4vh;
+    height: 5vh;
   }
 
   .button-not-pressed {
-    height: 4vh;
+    height: 5vh;
   }
 }
