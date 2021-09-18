@@ -4,7 +4,7 @@ import PostsDiscovery from '../pages/PostsDiscovery';
 import renderWithRouter from './RenderWithRouter';
 import mockInitialPostsList from '../__mocks__/mockInitialPostsList';
 
-describe('tests PostsDiscovery dynamic elements renderization', () => {
+describe('tests PostCard elements renderization', () => {
   beforeEach(() => {
     jest.spyOn(global, 'fetch').mockResolvedValue({
       json: jest.fn().mockResolvedValue(mockInitialPostsList),

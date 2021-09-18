@@ -6,7 +6,7 @@ import renderWithRouter from './RenderWithRouter';
 import mockInitialPostsList from '../__mocks__/mockInitialPostsList';
 import mockPaginationPostsList from '../__mocks__/mockPaginationPostsList';
 
-describe('tests PostsDiscovery dynamic elements renderization', () => {
+describe('tests is FindMoreButton is working correctly', () => {
   afterEach(() => {
     jest.restoreAllMocks();
   });

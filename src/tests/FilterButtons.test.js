@@ -4,7 +4,7 @@ import { fireEvent } from '@testing-library/dom';
 import PostsDiscovery from '../pages/PostsDiscovery';
 import renderWithRouter from './RenderWithRouter';
 
-describe('tests PostsDiscovery dynamic elements renderization', () => {
+describe('tests if FilterButtons are working correctly', () => {
   const pressedButtonClass = 'button-is-pressed';
   it('check if button with label equal to Hot is redirecting to the correct route', async () => {
     const { getByText, history } = renderWithRouter(<PostsDiscovery />);

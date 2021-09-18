@@ -2,7 +2,7 @@ import React from 'react';
 import App from '../App';
 import renderWithRouter from './RenderWithRouter';
 
-describe('tests PostsDiscovery static elements renderization', () => {
+describe('tests if App is rendering correctly', () => {
   it('check if Header is rendered', () => {
     const { getByText } = renderWithRouter(<App />);
     const reactText = getByText('REACT');
