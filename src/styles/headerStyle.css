@@ -1,5 +1,6 @@
 .header-style {
   align-items: center;
+  align-content: center;
   background-color: #6324C6;
   display: flex;
   height: 8vh;

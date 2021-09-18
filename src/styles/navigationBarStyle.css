@@ -9,5 +9,23 @@ nav {
 .buttons-wrapper {
   display: flex;
   justify-content: space-evenly;
-  width: 27vw;
+  width: 50vw;
+}
+
+@media only screen and (max-width: 1200px) and (min-width: 880px) {
+  .buttons-wrapper {
+    width: 50vw;
+  }
+}
+
+@media only screen and (max-width: 879px) and (min-width: 480px) {
+  .buttons-wrapper {
+    width: 68vw;
+  }
+}
+
+@media only screen and (max-width: 479px) {
+  .buttons-wrapper {
+    width: 90vw;
+  }
 }

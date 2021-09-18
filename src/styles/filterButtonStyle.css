@@ -4,9 +4,8 @@
   border-radius: 8px;
   display: flex;
   font-weight: bolder;
-  height: 4vh;
+  height: 5vh;
   justify-content: center;
-  width: 8vw;
 }
 
 .button-is-pressed {
@@ -15,9 +14,8 @@
   border-radius: 8px;
   display: flex;
   font-weight: bolder;
-  height: 4vh;
+  height: 5vh;
   justify-content: center;
-  width: 8vw;
 }
 
 .button-not-pressed:hover {
@@ -28,4 +26,40 @@
   color: #ffff;
   font-size: 1.3rem;
   text-decoration: none;
+  width: 15vw;
+}
+
+@media only screen and (max-width: 1200px) and (min-width: 880px) {
+  .filter-button {
+    width: 15vw;
+  }
+}
+
+@media only screen and (max-width: 879px) and (min-width: 480px) {
+  .filter-button {
+    width: 20vw;
+  }
+  
+  .button-is-pressed {
+    height: 4vh;
+  }
+
+  .button-not-pressed {
+    height: 4vh;
+  }
+}
+
+@media only screen and (max-width: 479px){
+  .filter-button {
+    font-size: 0.9rem;
+    width: 25vw;
+  }
+  
+  .button-is-pressed {
+    height: 4vh;
+  }
+
+  .button-not-pressed {
+    height: 4vh;
+  }
 }
