@@ -7,21 +7,22 @@ import { Link, useLocation } from 'react-router-dom';
 import '../styles/filterButtonStyle.css';
 
 export default function FilterButton(props) {
-  const { buttonLabel, pathRoute } = props;
-  const getCurrentRoute = useLocation();
-  const currentPath = getCurrentRoute.pathname;
+  const { label, pathRoute } = props;
+  const currentLocation = useLocation();
+  const currentPath = currentLocation.pathname;
 
   const definePressedButton = () => {
     if (currentPath === `/${pathRoute}`) {
       return 'button-is-pressed';
-    } return 'button-not-pressed';
+    }
+    return 'button-not-pressed';
   };
 
   return (
     <Link to={ pathRoute } className="filter-button">
-      <div className={ `${definePressedButton()}` }>
+      <div className={ definePressedButton() }>
         <span>
-          {buttonLabel}
+          {label}
         </span>
       </div>
     </Link>
@@ -29,6 +30,6 @@ export default function FilterButton(props) {
 }
 
 FilterButton.propTypes = {
-  buttonLabel: PropTypes.string,
+  label: PropTypes.string,
   pathRoute: PropTypes.string,
 }.isRequired;

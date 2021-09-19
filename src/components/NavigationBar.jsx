@@ -8,15 +8,15 @@ export default function NavigationBar() {
     <nav>
       <div className="buttons-wrapper">
         <FilterButton
-          buttonLabel="Hot"
+          label="Hot"
           pathRoute="hot"
         />
         <FilterButton
-          buttonLabel="News"
+          label="News"
           pathRoute="new"
         />
         <FilterButton
-          buttonLabel="Rising"
+          label="Rising"
           pathRoute="rising"
         />
       </div>

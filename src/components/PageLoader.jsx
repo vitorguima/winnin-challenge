@@ -2,7 +2,7 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 
-import LoadingSvg from '../assets/Loading.svg';
+import { ReactComponent as LoadingSvg } from '../assets/Loading.svg';
 
 import '../styles/pageLoaderStyle.css';
 
@@ -17,7 +17,7 @@ export default function PageLoader(props) {
     <div
       className={ `${valaidateLoaderVisibility()} loading-wrapper` }
     >
-      <img src={ LoadingSvg } alt="loading" />
+      <LoadingSvg />
     </div>
   );
 }
