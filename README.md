@@ -8,7 +8,7 @@
 
 ## Deploy da aplicação no Vercel
 
-* [Winnin Challenge](https://www.figma.com/file/PPvIPPITdlgZo9CeGDVezk/DesafioWinnin?node-id=0%3A1)
+* [Winnin Challenge](https://winnin-challenge-seven.vercel.app/hot)
 
 ## Tecnologias utilizadas
 
