@@ -6,6 +6,26 @@ import '../styles/postCardStyle.css';
 
 import noThumbnail from '../images/no-thumbnail.png';
 
+function treatsTitleCharacters(postTitle) {
+  const decodedTitle = postTitle.replace(/&amp;/g, '&');
+  return decodedTitle;
+}
+
+function convertCreationDate(dateInUnix) {
+  const convertParam = 1000;
+  const dateToIso = new Date(dateInUnix * convertParam);
+  return dateToIso;
+}
+
+function calculateTopicPostAge(dateInUnix) {
+  const topicCreateTime = convertCreationDate(dateInUnix);
+  const convertMinutesToHour = 3600000;
+  const currentTime = new Date();
+  const diferenceInHours = currentTime - topicCreateTime;
+  const hoursSinceCreation = Math.round((diferenceInHours) / (convertMinutesToHour));
+  return hoursSinceCreation;
+}
+
 export default function PostCard(props) {
   const {
     media,
@@ -37,21 +57,6 @@ export default function PostCard(props) {
         data-testid={ `thumbnail-${testId}` }
       />
     );
-  };
-
-  const convertCreationDate = (dateInUnix) => {
-    const convertParam = 1000;
-    const dateToIso = new Date(dateInUnix * convertParam);
-    return dateToIso;
-  };
-
-  const calculateTopicPostAge = (dateInUnix) => {
-    const topicCreateTime = convertCreationDate(dateInUnix);
-    const convertMinutesToHour = 3600000;
-    const currentTime = new Date();
-    const diferenceInHours = currentTime - topicCreateTime;
-    const hoursSinceCreation = Math.round((diferenceInHours) / (convertMinutesToHour));
-    return hoursSinceCreation;
   };
 
   const renderCreationTime = (dateInUnix, authorName) => {
@@ -121,11 +126,6 @@ export default function PostCard(props) {
         {redirectUrl}
       </p>
     );
-  };
-
-  const treatsTitleCharacters = (postTitle) => {
-    const decodedTitle = postTitle.replace(/&amp;/g, '&');
-    return decodedTitle;
   };
 
   return (
