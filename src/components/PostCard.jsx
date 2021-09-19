@@ -26,6 +26,15 @@ function calculateTopicPostAge(dateInUnix) {
   return hoursSinceCreation;
 }
 
+function isValidHttpUrl(string) {
+  try {
+    const url = new URL(string);
+    return url.href;
+  } catch (_) {
+    return false;
+  }
+}
+
 export default function PostCard(props) {
   const {
     media,
@@ -39,8 +48,9 @@ export default function PostCard(props) {
 
   const validateLinkVisibility = () => (media ? 'hidden-link' : 'visible-link');
 
-  const validateThumbnailUrl = () => {
-    if (thumbnail === 'self') {
+  const renderThumbnail = () => {
+    const checkThumbUrl = isValidHttpUrl(thumbnail);
+    if (!checkThumbUrl) {
       return (
         <img
           src={ noThumbnail }
@@ -137,7 +147,7 @@ export default function PostCard(props) {
         data-testid={ `postcard-${testId}` }
       >
         <div className="post-thumbnail">
-          {validateThumbnailUrl()}
+          {renderThumbnail()}
         </div>
       </div>
       <div className="post-details-wrapper">
@@ -147,7 +157,7 @@ export default function PostCard(props) {
         </div>
         <div className="reddit-link-wrapper">
           <a
-            href={ postUrl }
+            href={ `https://www.reddit.com${postUrl}` }
             target="blank"
             className={ `${validateLinkVisibility()} link-to-reddit` }
           >

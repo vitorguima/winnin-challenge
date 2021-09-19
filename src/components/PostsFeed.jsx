@@ -59,7 +59,7 @@ export default function PostsFeed() {
         title={ data.title }
         createdUtc={ data.created_utc }
         author={ data.author }
-        postUrl={ data.url }
+        postUrl={ data.permalink }
         media={ data.media }
         thumbnail={ data.thumbnail }
       />
@@ -100,6 +100,7 @@ export default function PostsFeed() {
         <FindMoreButton
           changeFeedPagination={ changeFeedPagination }
           paginationParam={ paginationParam }
+          isPageLoading={ isPageLoading }
         />
       </footer>
     </div>
