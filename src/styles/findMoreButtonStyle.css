@@ -15,6 +15,10 @@
   width: 90vw;
 }
 
+.hidden-button {
+  visibility: hidden;
+}
+
 .find-more-button:hover {
   background-color: #4d1d9b;
 }
