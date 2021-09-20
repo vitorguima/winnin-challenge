@@ -27,6 +27,8 @@ export default function PostsFeed() {
       setRedditPosts([...fetchReturn.children]);
       setIsPageLoading(false);
     };
+    setPaginationCount(0);
+    setRedditPosts([]);
     setInitialPosts();
   }, [currentPath]);
 
@@ -45,11 +47,6 @@ export default function PostsFeed() {
   // A idéia do state 'paginationCount' é ser uma referência para que a paginação aconteça corretamente, garantindo que esse fluxo seja executado apenas quando houver um click no botão 'FindMoreButton', responsável por atualizar esse estado.
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [paginationCount]);
-
-  useEffect(() => {
-    setPaginationCount(0);
-    setRedditPosts([]);
-  }, [currentPath]);
 
   const renderPostCards = () => (
     redditPosts.map(({ data }, index) => (

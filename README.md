@@ -16,13 +16,15 @@
 * [Eslint](https://github.com/betrybe/eslint-config-trybe)
 * [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
 * [Coverage](https://github.com/shinnn/coverage#readme)
+* [React Router](https://reactrouter.com/web/guides/quick-start)
 
 ## Comentários sobre o código
 
 * Foram utilizados componentes funcionais para o gerenciamento de estados da aplicação. 
 * Para o desenvolvimento, foi utilizada a [API do Reddit](https://www.reddit.com/dev/api/).
-* Não foram utilizadas ferramentas como Context API ou Redux para gerenciamente de estados globais da aplicação. Essa decisão foi motivada pelo fato de que a estrutura definida para a aplicação não resultaria em **[prop-drilling](https://www.geeksforgeeks.org/what-is-prop-drilling-and-how-to-avoid-it/)** entre os componentes existentes. Ou seja, as props passadas de um componente pai para um filho só ocorreu em situações nas quais o segundo, de fato, utilizaria tal prop. Em nenhuma situação, algum componente recebeu uma prop para que um sub componente dessa fosse utilizá-la. Essa opção evitou a adição de mais uma camada de abstração na aplicação construída ou de uma biblioteca terceira.
-* Foram criadas diferentes rotas para a navegação entre os diferentes tipos de tópicos: "/hot", "/new", "/rising". Essa decisão foi motivada pelo fato disso possibilitar que um usuário consiga acessar ou compartilhar com um terceiro, a url do caminho desejado. Além disso, através do **hook useLocation**, as rotas também foram utilizadas como um estado global da aplicação. Ou seja, serviram como input para a regra de negócio da aplicação.
+* Não foram utilizadas ferramentas como Context API ou Redux para gerenciamente de estados globais da aplicação. Essa decisão foi motivada pelo fato de que a estrutura definida para a aplicação não resultaria em **[prop-drilling](https://www.geeksforgeeks.org/what-is-prop-drilling-and-how-to-avoid-it/)** entre os componentes existentes. Ou seja, as props passadas de um componente pai para um filho só ocorreu em situações nas quais o segundo, de fato, utilizaria tal prop. Em nenhuma situação, algum componente recebeu uma prop para que um sub componente daquele fosse utilizá-la. Essa opção evitou a adição de mais uma camada de abstração na aplicação ou o incremento de uma biblioteca terceira.
+* Foram criadas diferentes rotas para a navegação entre os diferentes tipos de tópicos: "/hot", "/new" e "/rising". Essa decisão foi motivada pelo fato disso possibilitar que um usuário consiga acessar ou compartilhar com um terceiro, a url do caminho desejado. Além disso, através do **hook useLocation**, as rotas também foram utilizadas como um estado global da aplicação. Exemplos: [FilterButton](https://github.com/vitorguima/winnin-challenge/blob/74494c0dae4f3f6ae47e860aad3cd982c42d557d/src/components/FilterButton.jsx)(linha 14), [PostsFeed](https://github.com/vitorguima/winnin-challenge/blob/74494c0dae4f3f6ae47e860aad3cd982c42d557d/src/components/PostsFeed.jsx)(linha 31).
+
 
 ## Como instalar e executar a aplicação localmente
 
@@ -51,7 +53,7 @@ Ao ao aparecer a tela acima, aperte a tecla "a" para que todos os testes sejam e
 
 ## Para verificar a cobertura de testes
 
-* **npm run test-coverage**
+* ```npm run test-coverage```
 
 Esse comando retornará a seguinte tela dentro do seu terminal:
 
