@@ -21,8 +21,8 @@ function calculateTopicPostAge(dateInUnix) {
   const topicCreateTime = convertCreationDate(dateInUnix);
   const convertMinutesToHour = 3600000;
   const currentTime = new Date();
-  const diferenceInHours = currentTime - topicCreateTime;
-  const hoursSinceCreation = Math.round((diferenceInHours) / (convertMinutesToHour));
+  const diferenceInMinutes = currentTime - topicCreateTime;
+  const hoursSinceCreation = Math.round((diferenceInMinutes) / (convertMinutesToHour));
   return hoursSinceCreation;
 }
 
