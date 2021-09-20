@@ -11,7 +11,7 @@ export default function FindMoreButton(props) {
     isPageLoading,
   } = props;
 
-  const valaidateButtonVisibility = () => {
+  const setButtonVisibility = () => {
     if (!paginationParam || isPageLoading) {
       return 'hidden-button';
     }
@@ -22,7 +22,7 @@ export default function FindMoreButton(props) {
     <button
       type="button"
       onClick={ () => changeFeedPagination() }
-      className={ `find-more-button ${valaidateButtonVisibility()}` }
+      className={ `find-more-button ${setButtonVisibility()}` }
       disabled={ !paginationParam || isPageLoading }
     >
       + Ver mais

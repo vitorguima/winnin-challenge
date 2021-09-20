@@ -11,11 +11,11 @@ export default function PageLoader(props) {
     visibility,
   } = props;
 
-  const valaidateLoaderVisibility = () => (visibility ? '' : 'hidden-loader');
+  const setLoaderVisibility = () => (visibility ? '' : 'hidden-loader');
 
   return (
     <div
-      className={ `${valaidateLoaderVisibility()} loading-wrapper` }
+      className={ `${setLoaderVisibility()} loading-wrapper` }
     >
       <LoadingSvg />
     </div>
