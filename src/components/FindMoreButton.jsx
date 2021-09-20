@@ -7,23 +7,23 @@ import '../styles/findMoreButtonStyle.css';
 export default function FindMoreButton(props) {
   const {
     changeFeedPagination,
-    paginationParam,
-    isPageLoading,
+    // paginationParam,
+    // isPageLoading,
   } = props;
 
-  const setButtonVisibility = () => {
-    if (!paginationParam || isPageLoading) {
-      return 'hidden-button';
-    }
-    return '';
-  };
+  // const setButtonVisibility = () => {
+  //   if (!paginationParam || isPageLoading) {
+  //     return 'hidden-button';
+  //   }
+  //   return '';
+  // };
 
   return (
     <button
       type="button"
       onClick={ () => changeFeedPagination() }
-      className={ `find-more-button ${setButtonVisibility()}` }
-      disabled={ !paginationParam || isPageLoading }
+      className="find-more-button"
+      // disabled={ !paginationParam || isPageLoading }
     >
       + Ver mais
     </button>
