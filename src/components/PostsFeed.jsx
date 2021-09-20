@@ -39,21 +39,21 @@ export default function PostsFeed() {
   //   setInitialPosts();
   // }, [currentPath]);
 
-  // useEffect(() => {
-  //   const setMorePosts = async () => {
-  //     setIsPageLoading(true);
-  //     const fetchReturn = await getPostsList(currentPath, paginationParam);
-  //     setRedditPosts([...data.data.children, ...fetchReturn.children]);
-  //     setPaginationParam(fetchReturn.after);
-  //     setIsPageLoading(false);
-  //   };
-  //   if (paginationCount && !isPageLoading) {
-  //     setMorePosts();
-  //   }
-  // // currentPath', 'isPageLoading' e 'paginationParam' não devem ser inseridos como dependência do useEffect para que não seja criado um loop infinito de atualizações.
-  // // A idéia do state 'paginationCount' é ser uma referência para que a paginação aconteça corretamente, garantindo que esse fluxo seja executado apenas quando houver um click no botão 'FindMoreButton', responsável por atualizar esse estado.
-  // // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [paginationCount]);
+  useEffect(() => {
+    const setMorePosts = async () => {
+      setIsPageLoading(true);
+      const fetchReturn = await getPostsList(currentPath, paginationParam);
+      setRedditPosts([...data.data.children, ...fetchReturn.children]);
+      setPaginationParam(fetchReturn.after);
+      setIsPageLoading(false);
+    };
+    if (paginationCount && !isPageLoading) {
+      setMorePosts();
+    }
+  // currentPath', 'isPageLoading' e 'paginationParam' não devem ser inseridos como dependência do useEffect para que não seja criado um loop infinito de atualizações.
+  // A idéia do state 'paginationCount' é ser uma referência para que a paginação aconteça corretamente, garantindo que esse fluxo seja executado apenas quando houver um click no botão 'FindMoreButton', responsável por atualizar esse estado.
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [paginationCount]);
 
   const renderPostCards = () => {
     if (!data) {
