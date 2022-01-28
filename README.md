@@ -1,10 +1,4 @@
-# Desafio realizado para a vaga de front-end na empresa Winnin
-
-## Proposta
-
-"O desafio consiste em ler dados da api do Reddit, do subreddit [reactjs](https://www.reddit.com/r/reactjs/) e criar uma aplicação React contendo as informações que podem ser vistas no [Figma](https://www.figma.com/file/PPvIPPITdlgZo9CeGDVezk/DesafioWinnin?node-id=0%3A1) com três botões para navegar entre hot, new e rising." 
-
-[Respositório do desafio](https://github.com/winnin/desafio/blob/master/FRONTEND.md).
+# Reddit API Consumer
 
 ## Deploy da aplicação no Vercel
 
